@@ -1,0 +1,38 @@
+.pokemonElement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  margin: 10px;
+  border: 2px solid rgba(44, 44, 44, 0.1);
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+.pokemonName {
+  text-transform: capitalize;
+}
+
+.pokemonElement:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.pokemonElement img {
+  width: 150px;
+}
+
+.types {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.typeElements {
+  margin: 3px;
+}
+
+.pokemonNumber {
+  color: gray;
+  font-weight: 700;
+}

@@ -1,0 +1,21 @@
+.viewPokemon img {
+  height: 400px;
+}
+
+.viewPokemon h3 {
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+}
+
+.pokemonNumber {
+  color: gray;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pokemonDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
