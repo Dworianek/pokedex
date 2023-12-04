@@ -4,17 +4,44 @@
 
 #main {
   display: flex;
+  flex-direction: row;
 }
 
 #content {
   width: 60%;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
 }
 #aside {
   width: 40%;
   display: flex;
   justify-content: center;
+}
+
+.showTypes {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 30px 0 30px 0;
+}
+
+.showTypes li {
+  list-style: none;
+  text-transform: uppercase;
+  border: solid 1px rgb(212, 212, 212);
+  padding: 3px 15px 3px 15px;
+  border-radius: 5px;
+}
+
+.showTypes li:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.showPokemon {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
 }
