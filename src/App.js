@@ -6,7 +6,7 @@ import PokemonComponent from "./components/pokemonComponent";
 import ViewPokemonComponent from "./components/viewPokemonComponent";
 import Header from "./components/header";
 
-const fetchLink = "https://pokeapi.co/api/v2/pokemon";
+const fetchLink = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]); //Lista pokemonów
@@ -31,7 +31,6 @@ function App() {
     "rock",
     "ghost",
     "dragon",
-    "dark",
     "steel",
     "fairy",
   ]);
