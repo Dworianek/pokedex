@@ -113,16 +113,20 @@ function App() {
       <div id="header">
         <Header />
       </div>
+      <div id="nav">
+        <div id="pokemonTeam">Twój team</div>
+        <div id="pokemonInfo">
+          {toggleClick ? (
+            <ViewPokemonComponent pokemonInfo={viewPokemon} />
+          ) : null}
+        </div>
+      </div>
       <div id="main">
         <div id="content">
           <div className="showTypes">{showTypes}</div>
           <div className="showPokemon">{allPokemon}</div>
         </div>
-        <div id="aside">
-          {toggleClick ? (
-            <ViewPokemonComponent pokemonInfo={viewPokemon} />
-          ) : null}
-        </div>
+        
       </div>
     </>
   );

@@ -7,23 +7,35 @@
   flex-direction: row;
 }
 
-#content {
-  width: 60%;
+#nav{
   display: flex;
-  flex-direction: column;
+  flex: row;
+  justify-content: center;
 }
-#aside {
+
+#pokemonTeam{
+  width: 40%;
+}
+
+#pokemonInfo {
   width: 40%;
   display: flex;
   justify-content: center;
 }
 
+#content {
+  display: flex;
+  flex-direction: column;
+}
+
 .showTypes {
+  margin: 50px 0 50px 0;
+  padding: 0 250px 0 250px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-evenly;
-  margin: 30px 0 30px 0;
+  justify-content: center;
+  gap:5px;
 }
 
 .showTypes li {
