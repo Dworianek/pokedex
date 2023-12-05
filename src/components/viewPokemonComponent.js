@@ -1,13 +1,26 @@
 import React from "react";
 
+import {useState} from "react"
+
 import "../css/pokemonInfo.css";
 
 export default function ViewPokemonComponent(props) {
   const pokemonNumber = props.pokemonInfo.order;
+
+  const [spriteStyle,setSpriteStyle] = useState(true)
+
+  const basicSprite = props.pokemonInfo.sprites.other["official-artwork"].front_default
+  const shinySprite = props.pokemonInfo.sprites.other["official-artwork"].front_shiny
+
   return (
+    
     <div className="viewPokemon">
+      <div className="spritesChange">
+        <button onClick={()=>setSpriteStyle(true)}>Basic</button>
+        <button onClick={()=>setSpriteStyle(false)}>Shiny</button>
+      </div>
       <img
-        src={props.pokemonInfo.sprites.other["official-artwork"].front_default}
+        src={spriteStyle===true ? basicSprite: shinySprite}
         alt=""
       />
       <p className="pokemonNumber">
