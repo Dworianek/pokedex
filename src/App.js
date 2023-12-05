@@ -14,6 +14,8 @@ function App() {
 
   const [allTypePokemon, setAllTypePokemon] = useState([...allPokedex]); //Szczególy każdego pokemona
 
+  const [myTeam,setMyTeam] = useState(["bulbasaur","charmander","pikachu","ditto","magicarp","tauros"])
+
   const [allTypes, setAllTypes] = useState([
     "all",
     "normal",

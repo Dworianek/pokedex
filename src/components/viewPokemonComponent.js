@@ -15,6 +15,7 @@ export default function ViewPokemonComponent(props) {
   return (
     
     <div className="viewPokemon">
+      <div className="viewPokemonLeft">
       <div className="spritesChange">
         <button onClick={()=>setSpriteStyle(true)}>Basic</button>
         <button onClick={()=>setSpriteStyle(false)}>Shiny</button>
@@ -23,10 +24,12 @@ export default function ViewPokemonComponent(props) {
         src={spriteStyle===true ? basicSprite: shinySprite}
         alt=""
       />
+      <h3>{props.pokemonInfo.name}</h3>
       <p className="pokemonNumber">
         {pokemonNumber.toString().padStart(4, "0")}
       </p>
-      <h3>{props.pokemonInfo.name}</h3>
+      </div>
+      <div className="viewPokemonRight">
       <div className="pokemonDetails">
         <div className="attack">
           <strong>
@@ -51,6 +54,10 @@ export default function ViewPokemonComponent(props) {
           <p>Waga: {props.pokemonInfo.weight}</p>
         </div>
       </div>
+
+      </div>
+      
+     
     </div>
   );
 }

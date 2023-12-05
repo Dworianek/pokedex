@@ -1,11 +1,23 @@
+.viewPokemon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .viewPokemon img {
-  height: 300px;
+  height: 250px;
 }
 
 .viewPokemon h3 {
   text-transform: capitalize;
   display: flex;
   justify-content: center;
+}
+
+.viewPokemonRight{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .pokemonNumber {
@@ -25,3 +37,4 @@
   justify-content: center;
   gap:2px;
 }
+

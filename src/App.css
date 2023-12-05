@@ -14,11 +14,11 @@
 }
 
 #pokemonTeam{
-  width: 40%;
+  width: 50%;
 }
 
 #pokemonInfo {
-  width: 40%;
+  width: 50%;
   display: flex;
   justify-content: center;
 }
