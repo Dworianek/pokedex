@@ -1,10 +1,15 @@
+.mainAboutPokemon {
+  background-color: white;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
 .viewPokemon {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  padding: 10px 20px 10px 20px;
-  border-radius: 10%;
 }
 
 .viewPokemon img {
@@ -15,6 +20,9 @@
 .nameOrder {
   text-transform: capitalize;
   text-align: center;
+  padding: 0;
+  margin: 0;
+  font-size: 25px;
 }
 
 .viewPokemonRight {

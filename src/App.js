@@ -6,6 +6,7 @@ import PokemonComponent from "./components/pokemonComponent";
 import ViewPokemonComponent from "./components/viewPokemonComponent";
 import Header from "./components/header";
 import MyTeam from "./components/myTeam";
+import Footer from "./components/footer";
 
 import typeColours from "./components/colours";
 
@@ -150,6 +151,9 @@ function App() {
           <div className="showTypes">{showTypes}</div>
           <div className="showPokemon">{allPokemon}</div>
         </div>
+      </div>
+      <div className="footer">
+        <Footer />
       </div>
     </>
   );
