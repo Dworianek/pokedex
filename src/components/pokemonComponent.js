@@ -2,6 +2,8 @@ import React from "react";
 
 import "../css/pokemonElement.css";
 
+import pokeballIcon from '../img/pokeball.png'
+
 export default function PokemonComponent(props) {
   const number = props.pokemon.order;
   return (
@@ -10,7 +12,7 @@ export default function PokemonComponent(props) {
       onClick={() => {props.onClick(props.pokemon)}}
     >
       <img
-        src={props.pokemon.sprites.other["official-artwork"].front_default}
+         className="pokemonIcon" src={props.pokemon.sprites.other["official-artwork"].front_default}
         alt=""
       />
       <p className="pokemonNumber">{number.toString().padStart(4, "0")}</p>
@@ -24,7 +26,7 @@ export default function PokemonComponent(props) {
           </>
         ))}
       </div>
-      <button onClick={()=>{props.addTeamClick(props.pokemon)}}>Add to Team</button>
+      <img className="pokeballIcon" src={pokeballIcon} alt="" onClick={()=>{props.addTeamClick(props.pokemon)}}/>
     </div>
   );
 }

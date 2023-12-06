@@ -21,18 +21,7 @@ function App() {
 
   const [toggleClick, setToggleClick] = useState(false);
 
-  const [myTeam,setMyTeam] = useState([
-    {
-      order:'001',
-      name:"bulbasaur",
-      img : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" 
-    },
-    {
-      order:'0209',
-      name:"tauros",
-      img : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/128.svg"
-    }
-    ])
+  const [myTeam,setMyTeam] = useState([])
 
   const [allTypes, setAllTypes] = useState([
     "all",
@@ -106,10 +95,10 @@ function App() {
   const allPokemon =
     typeClick === "all"
       ? allPokedex.map((pokemon) => (
-          <PokemonComponent pokemon={pokemon} addTeamClick={addPokemonToTeam} onClick={pokemonOnClick} />
+          <PokemonComponent pokemon={pokemon} addTeamClick={addPokemonToTeam}  onClick={pokemonOnClick} />
         ))
       : allTypePokemon.map((pokemon) => (
-          <PokemonComponent pokemon={pokemon} addTeamClick={addPokemonToTeam} onClick={pokemonOnClick} />
+          <PokemonComponent pokemon={pokemon} addTeamClick={addPokemonToTeam}  onClick={pokemonOnClick} />
         ));
 
   const showTypes = allTypes.map((type) => (

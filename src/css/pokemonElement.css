@@ -18,7 +18,7 @@
   cursor: pointer;
 }
 
-.pokemonElement img {
+.pokemonIcon  {
   width: 150px;
 }
 
@@ -35,4 +35,14 @@
 .pokemonNumber {
   color: gray;
   font-weight: 700;
+}
+
+.pokeballIcon{
+  width: 30px;
+  height: 30px; 
+  margin: 10px 0 10px 0;
+}
+
+.pokeballIcon:hover{
+  transform: scale(1.1);
 }

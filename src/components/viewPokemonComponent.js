@@ -53,11 +53,9 @@ export default function ViewPokemonComponent(props) {
           <p>Wysokość: {props.pokemonInfo.height}</p>
           <p>Waga: {props.pokemonInfo.weight}</p>
         </div>
+        
       </div>
-
       </div>
-      
-     
     </div>
   );
 }
