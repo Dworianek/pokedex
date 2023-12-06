@@ -11,10 +11,14 @@
   display: flex;
   flex: row;
   justify-content: center;
+  align-items: center;
 }
 
 #pokemonTeam{
   width: 50%;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
 }
 
 #pokemonInfo {

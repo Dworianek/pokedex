@@ -7,7 +7,7 @@ export default function PokemonComponent(props) {
   return (
     <div
       className="pokemonElement"
-      onClick={() => props.onClick(props.pokemon)}
+      onClick={() => {props.onClick(props.pokemon)}}
     >
       <img
         src={props.pokemon.sprites.other["official-artwork"].front_default}
@@ -24,6 +24,7 @@ export default function PokemonComponent(props) {
           </>
         ))}
       </div>
+      <button onClick={()=>{props.addTeamClick(props.pokemon)}}>Add to Team</button>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import PokemonComponent from "./components/pokemonComponent";
 import ViewPokemonComponent from "./components/viewPokemonComponent";
 import Header from "./components/header";
+import MyTeam from "./components/myTeam";
 
 const fetchLink = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
@@ -14,7 +15,24 @@ function App() {
 
   const [allTypePokemon, setAllTypePokemon] = useState([...allPokedex]); //Szczególy każdego pokemona
 
-  const [myTeam,setMyTeam] = useState(["bulbasaur","charmander","pikachu","ditto","magicarp","tauros"])
+  const [typeClick, setTypeClick] = useState("all");
+
+  const [viewPokemon, setViewPokemon] = useState({});
+
+  const [toggleClick, setToggleClick] = useState(false);
+
+  const [myTeam,setMyTeam] = useState([
+    {
+      order:'001',
+      name:"bulbasaur",
+      img : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" 
+    },
+    {
+      order:'0209',
+      name:"tauros",
+      img : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/128.svg"
+    }
+    ])
 
   const [allTypes, setAllTypes] = useState([
     "all",
@@ -58,12 +76,6 @@ function App() {
     fairy: '#D685AD',
   };
 
-  const [typeClick, setTypeClick] = useState("all");
-
-  const [viewPokemon, setViewPokemon] = useState({});
-
-  const [toggleClick, setToggleClick] = useState(false);
-
   useEffect(() => {
     fetch(fetchLink)
       .then((response) => response.json())
@@ -83,13 +95,21 @@ function App() {
     setToggleClick(true);
   };
 
+  const addPokemonToTeam = (pokemon) =>{
+    setMyTeam([...myTeam,{ 
+      order:pokemon.order,
+      name: pokemon.name,
+      img : pokemon.sprites.other.dream_world.front_default
+    }])
+  }
+
   const allPokemon =
     typeClick === "all"
       ? allPokedex.map((pokemon) => (
-          <PokemonComponent pokemon={pokemon} onClick={pokemonOnClick} />
+          <PokemonComponent pokemon={pokemon} addTeamClick={addPokemonToTeam} onClick={pokemonOnClick} />
         ))
       : allTypePokemon.map((pokemon) => (
-          <PokemonComponent pokemon={pokemon} onClick={pokemonOnClick} />
+          <PokemonComponent pokemon={pokemon} addTeamClick={addPokemonToTeam} onClick={pokemonOnClick} />
         ));
 
   const showTypes = allTypes.map((type) => (
@@ -110,13 +130,18 @@ function App() {
     </>
   ));
 
+
+  const pokekemonTeam = myTeam.map(pokemon => (
+    <MyTeam {...pokemon}/>
+  ))
+
   return (
     <>
       <div id="header">
         <Header />
       </div>
       <div id="nav">
-        <div id="pokemonTeam">Twój team</div>
+        <div id="pokemonTeam">{pokekemonTeam}</div>
         <div id="pokemonInfo">
           {toggleClick ? (
             <ViewPokemonComponent pokemonInfo={viewPokemon} />
