@@ -7,7 +7,7 @@ import ViewPokemonComponent from "./components/viewPokemonComponent";
 import Header from "./components/header";
 import MyTeam from "./components/myTeam";
 
-import typeColours from './components/colours'
+import typeColours from "./components/colours";
 
 const fetchLink = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
@@ -23,7 +23,7 @@ function App() {
 
   const [toggleClick, setToggleClick] = useState(false);
 
-  const [myTeam,setMyTeam] = useState([])
+  const [myTeam, setMyTeam] = useState([]);
 
   const [allTypes, setAllTypes] = useState([
     "all",
@@ -46,7 +46,6 @@ function App() {
     "fairy",
   ]);
 
-
   useEffect(() => {
     fetch(fetchLink)
       .then((response) => response.json())
@@ -66,45 +65,54 @@ function App() {
     setToggleClick(true);
   };
 
-  const addPokemonToTeam = (pokemon) =>{
+  const addPokemonToTeam = (pokemon) => {
+    const index = myTeam.findIndex((obiekt) => obiekt.order === pokemon.order);
 
-    const index = myTeam.findIndex(obiekt => obiekt.order === pokemon.order);
-
-    if(index ==-1)
-    {
-      if(myTeam.length<6){
-        setMyTeam([...myTeam,{ 
-          order:pokemon.order,
-          name: pokemon.name,
-          img : pokemon.sprites.other.dream_world.front_default
+    if (index == -1) {
+      if (myTeam.length < 6) {
+        setMyTeam([
+          ...myTeam,
+          {
+            order: pokemon.order,
+            name: pokemon.name,
+            img: pokemon.sprites.other["official-artwork"].front_default,
+          },
+        ]);
+      } else {
+        alert("Możesz mieć maksymalnie 6 pokemonów.");
       }
-      ]) }
-      else{
-        alert("Możesz mieć maksymalnie 6 pokemonów.")
-      }
-    }else{
-      alert(`Masz już ${pokemon.name}'a w swojej drużynie.`)
+    } else {
+      alert(`Masz już ${pokemon.name}'a w swojej drużynie.`);
     }
-   
-  }
+  };
 
   const allPokemon =
     typeClick === "all"
       ? allPokedex.map((pokemon) => (
-          <PokemonComponent pokemon={pokemon} addTeamClick={addPokemonToTeam}  onClick={pokemonOnClick} />
+          <PokemonComponent
+            pokemon={pokemon}
+            addTeamClick={addPokemonToTeam}
+            onClick={pokemonOnClick}
+          />
         ))
       : allTypePokemon.map((pokemon) => (
-          <PokemonComponent pokemon={pokemon} addTeamClick={addPokemonToTeam}  onClick={pokemonOnClick} />
+          <PokemonComponent
+            pokemon={pokemon}
+            addTeamClick={addPokemonToTeam}
+            onClick={pokemonOnClick}
+          />
         ));
 
   const showTypes = allTypes.map((type) => (
     <>
-      <li style={{backgroundColor:typeColours[type]}}
+      <li
+        style={{ backgroundColor: typeColours[type] }}
         onClick={() => {
           setAllTypePokemon(
             allPokedex.filter(
-              (pokemonType) => pokemonType.types[0]?.type.name === type ||
-              pokemonType.types[1]?.type.name === type 
+              (pokemonType) =>
+                pokemonType.types[0]?.type.name === type ||
+                pokemonType.types[1]?.type.name === type
             )
           );
           setTypeClick(type);
@@ -115,10 +123,14 @@ function App() {
     </>
   ));
 
+  const removePokemonFromTeam = (order) => {
+    const tempTab = myTeam.filter((pokemon) => pokemon.order != order);
+    setMyTeam(tempTab);
+  };
 
-  const pokemonTeam = myTeam.map(pokemon => (
-    <MyTeam {...pokemon}/>
-  ))
+  const pokemonTeam = myTeam.map((pokemon) => (
+    <MyTeam {...pokemon} removePokemonFromTeam={removePokemonFromTeam} />
+  ));
 
   return (
     <>
@@ -138,7 +150,6 @@ function App() {
           <div className="showTypes">{showTypes}</div>
           <div className="showPokemon">{allPokemon}</div>
         </div>
-        
       </div>
     </>
   );
