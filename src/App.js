@@ -7,6 +7,8 @@ import ViewPokemonComponent from "./components/viewPokemonComponent";
 import Header from "./components/header";
 import MyTeam from "./components/myTeam";
 
+import typeColours from './components/colours'
+
 const fetchLink = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
 function App() {
@@ -44,26 +46,6 @@ function App() {
     "fairy",
   ]);
 
-  const typeColours = {
-    normal: '#A8A77A',
-    fire: '#EE8130',
-    water: '#6390F0',
-    electric: '#F7D02C',
-    grass: '#7AC74C',
-    ice: '#96D9D6',
-    fighting: '#C22E28',
-    poison: '#A33EA1',
-    ground: '#E2BF65',
-    flying: '#A98FF3',
-    psychic: '#F95587',
-    bug: '#A6B91A',
-    rock: '#B6A136',
-    ghost: '#735797',
-    dragon: '#6F35FC',
-    dark: '#705746',
-    steel: '#B7B7CE',
-    fairy: '#D685AD',
-  };
 
   useEffect(() => {
     fetch(fetchLink)
@@ -85,11 +67,25 @@ function App() {
   };
 
   const addPokemonToTeam = (pokemon) =>{
-    setMyTeam([...myTeam,{ 
-      order:pokemon.order,
-      name: pokemon.name,
-      img : pokemon.sprites.other.dream_world.front_default
-    }])
+
+    const index = myTeam.findIndex(obiekt => obiekt.order === pokemon.order);
+
+    if(index ==-1)
+    {
+      if(myTeam.length<6){
+        setMyTeam([...myTeam,{ 
+          order:pokemon.order,
+          name: pokemon.name,
+          img : pokemon.sprites.other.dream_world.front_default
+      }
+      ]) }
+      else{
+        alert("Możesz mieć maksymalnie 6 pokemonów.")
+      }
+    }else{
+      alert(`Masz już ${pokemon.name}'a w swojej drużynie.`)
+    }
+   
   }
 
   const allPokemon =
@@ -120,7 +116,7 @@ function App() {
   ));
 
 
-  const pokekemonTeam = myTeam.map(pokemon => (
+  const pokemonTeam = myTeam.map(pokemon => (
     <MyTeam {...pokemon}/>
   ))
 
@@ -130,7 +126,7 @@ function App() {
         <Header />
       </div>
       <div id="nav">
-        <div id="pokemonTeam">{pokekemonTeam}</div>
+        <div id="pokemonTeam">{pokemonTeam}</div>
         <div id="pokemonInfo">
           {toggleClick ? (
             <ViewPokemonComponent pokemonInfo={viewPokemon} />
