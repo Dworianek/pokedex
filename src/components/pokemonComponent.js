@@ -22,7 +22,7 @@ export default function PokemonComponent(props) {
       <div className="types">
         {props.pokemon.types.map((typesElement, index) => (
           <>
-            <div  key={index} className="typeElements" style={{backgroundColor:typeColours[typesElement.type.name], padding:"2px 7px 2px 7px,", borderRadius:"10px"}}>
+            <div  key={index} className="typeElements" style={{backgroundColor:typeColours[typesElement.type.name], padding:"2px 10px 2px 10px", borderRadius:"10px"}}>
                {typesElement.type.name}
             </div>
           </>
