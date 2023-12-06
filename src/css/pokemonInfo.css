@@ -1,23 +1,26 @@
-.viewPokemon{
+.viewPokemon {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10%;
 }
 
 .viewPokemon img {
-  height: 250px;
+  height: 200px;
+  padding: 20px 0 20px 0;
 }
 
-.viewPokemon h3 {
+.nameOrder {
   text-transform: capitalize;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
-.viewPokemonRight{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.viewPokemonRight {
+  padding: 20px 50px 20px 50px;
+  background-color: #ffb703;
+  border-radius: 10%;
 }
 
 .pokemonNumber {
@@ -30,11 +33,33 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 15px;
 }
 
-.spritesChange{
+.spritesChange {
   display: flex;
   justify-content: center;
-  gap:2px;
+  gap: 10px;
 }
 
+.spritesChange img {
+  width: 30px;
+  height: 30px;
+}
+
+.spritesChange img:hover {
+  transform: scale(1.2);
+}
+
+.infoHeader {
+  font-size: 23px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+}
+
+.infoValue {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding: 0;
+  margin: 10px 0 0 0;
+}

@@ -1,3 +1,7 @@
+body {
+  background-color: #eef1d69d;
+}
+
 #header {
   font-size: 20px;
 }
@@ -7,22 +11,22 @@
   flex-direction: row;
 }
 
-#nav{
+#nav {
   display: flex;
   flex: row;
   justify-content: center;
   align-items: center;
 }
 
-#pokemonTeam{
-  width: 50%;
+#pokemonTeam {
+  width: 45%;
   display: flex;
   gap: 5px;
   justify-content: center;
 }
 
 #pokemonInfo {
-  width: 40%;
+  width: 45%;
   display: flex;
   justify-content: center;
 }
@@ -39,7 +43,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  gap:5px;
+  gap: 5px;
 }
 
 .showTypes li {
@@ -60,4 +64,10 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.pokemonInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

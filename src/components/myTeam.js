@@ -11,6 +11,7 @@ export default function MyTeams(props) {
         <img src={props.img} alt="" />
       </div>
       <img
+        className="oakImg"
         width={35}
         src={oak}
         alt=""

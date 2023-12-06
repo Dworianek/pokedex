@@ -1,18 +1,29 @@
-.pokemonTeamElement{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 120px;
-    width: 120px;
-    background-color:aliceblue;
-    border-radius: 50%;
+.pokemonTeamElement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  width: 120px;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .pokemonTeamElement img {
-    width: 75px;
+  width: 75px;
 }
-.chooseTeam{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.chooseTeam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.oakImg {
+  margin-top: 5px;
+  background-color: #fb8500;
+  border-radius: 50%;
+  padding: 5%;
+}
+
+.oakImg:hover {
+  transform: scale(1.1);
 }
