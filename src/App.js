@@ -26,6 +26,8 @@ function App() {
 
   const [myTeam, setMyTeam] = useState([]);
 
+  const [myTeamType, setMyTeamType] = useState([]);
+
   const [allTypes, setAllTypes] = useState([
     "all",
     "normal",
