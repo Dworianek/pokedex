@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useState } from "react";
+import { Row, Col, Container } from "react-bootstrap";
 
 import typeColours from "./colours";
 
@@ -20,20 +21,34 @@ export default function ViewPokemonComponent(props) {
     props.pokemonInfo.sprites.other["official-artwork"].front_shiny;
 
   return (
-    <div className="mainAboutPokemon">
-      <p className="nameOrder">
-        {props.pokemonInfo.name}{" "}
-        <strong>#{pokemonNumber.toString().padStart(4, "0")}</strong>
-      </p>{" "}
-      <div className="viewPokemon">
-        <div className="viewPokemonLeft">
-          <div className="spritesChange">
-            <img src={normal} alt="" onClick={() => setSpriteStyle(true)} />
-            <img src={shiny} alt="" onClick={() => setSpriteStyle(false)} />
+    <>
+      <Row>
+        <p className="nameOrder">
+          {props.pokemonInfo.name}{" "}
+          <strong>#{pokemonNumber.toString().padStart(4, "0")}</strong>
+        </p>{" "}
+      </Row>
+      <Row>
+        <Col
+          lg={4}
+          className="d-flex align-items-center justify-content-center "
+        >
+          <div className="viewPokemonLeft ">
+            <div className="spritesChange">
+              <img src={normal} alt="" onClick={() => setSpriteStyle(true)} />
+              <img src={shiny} alt="" onClick={() => setSpriteStyle(false)} />
+            </div>
+            <img
+              src={spriteStyle === true ? basicSprite : shinySprite}
+              alt=""
+            />
           </div>
-          <img src={spriteStyle === true ? basicSprite : shinySprite} alt="" />
-        </div>
-        <div className="viewPokemonRight">
+        </Col>
+        <Col
+          lg={5}
+          className="d-flex align-items-center justify-content-center viewPokemonRight"
+        >
+          {" "}
           <div className="pokemonDetails">
             <div className="attack">
               <strong>
@@ -87,8 +102,8 @@ export default function ViewPokemonComponent(props) {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </>
   );
 }

@@ -1,20 +1,11 @@
+.viewPokemonLeft img {
+  height: 200px;
+}
+
 .mainAboutPokemon {
   background-color: white;
-  padding: 10px 20px 10px 20px;
-  border-radius: 10%;
-  display: flex;
-  flex-direction: column;
-}
-
-.viewPokemon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.viewPokemon img {
-  height: 200px;
-  padding: 20px 0 20px 0;
+  padding: 20px 80px 20px 20px;
+  border-radius: 5%;
 }
 
 .nameOrder {
@@ -31,16 +22,10 @@
   border-radius: 10%;
 }
 
-.pokemonNumber {
-  color: gray;
-  font-weight: 700;
-  text-align: center;
-}
-
 .pokemonDetails {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   gap: 15px;
 }
 
@@ -51,8 +36,7 @@
 }
 
 .spritesChange img {
-  width: 30px;
-  height: 30px;
+  height: 40px;
 }
 
 .spritesChange img:hover {

@@ -1,6 +1,8 @@
 import "./App.css";
 
 import { useState, useEffect } from "react";
+import { Row, Col, Container } from "react-bootstrap";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import PokemonComponent from "./components/pokemonComponent";
 import ViewPokemonComponent from "./components/viewPokemonComponent";
@@ -25,9 +27,6 @@ function App() {
   const [toggleClick, setToggleClick] = useState(false);
 
   const [myTeam, setMyTeam] = useState([]);
-  const [myTeamType, setMyTeamType] = useState([]);
-
-  const [myTeamType, setMyTeamType] = useState([]);
 
   const [allTypes, setAllTypes] = useState([
     "all",
@@ -82,7 +81,6 @@ function App() {
             img: pokemon.sprites.other["official-artwork"].front_default,
           },
         ]);
-        setMyTeamType([...myTeamType, pokemon.types[0]?.type.name])
       } else {
         alert("Możesz mieć maksymalnie 6 pokemonów.");
       }
@@ -137,35 +135,41 @@ function App() {
     <MyTeam {...pokemon} removePokemonFromTeam={removePokemonFromTeam} />
   ));
 
-  const pokemonTeamTypes = myTeamType.map((type) => (
-  <>
-   <p>{type}</p>
-   </>
-  ));
-
-
   return (
     <>
-      <div id="header">
-        <Header />
-      </div>
-      <div id="nav">
-        <div id="pokemonTeam">{pokemonTeam}{pokemonTeamTypes}</div>
-        <div id="pokemonInfo">
-          {toggleClick ? (
-            <ViewPokemonComponent pokemonInfo={viewPokemon} />
-          ) : null}
-        </div>
-      </div>
-      <div id="main">
-        <div id="content">
-          <div className="showTypes">{showTypes}</div>
-          <div className="showPokemon">{allPokemon}</div>
-        </div>
-      </div>
-      <div className="footer">
-        <Footer />
-      </div>
+      <Container fluid style={{ backgroundColor: "#eef1d69d" }}>
+        <Row className="header">
+          <Header />
+        </Row>
+        <Row className="rowTeam align-items-center">
+          <Col
+            lg={6}
+            className="d-flex align-items-center justify-content-center"
+          >
+            {pokemonTeam}
+          </Col>
+          <Col
+            lg={6}
+            className="d-flex-column align-items-center justify-content-center "
+          >
+            {toggleClick ? (
+              <ViewPokemonComponent pokemonInfo={viewPokemon} />
+            ) : null}
+          </Col>
+        </Row>
+        <Row className="rowPokemon">
+          <div id="main">
+            <div id="content">
+              <div className="showTypes">{showTypes}</div>
+              <div className="showPokemon">{allPokemon}</div>
+            </div>
+          </div>
+        </Row>
+        <Row className="rowFooter">
+          {" "}
+          <Footer />
+        </Row>
+      </Container>
     </>
   );
 }

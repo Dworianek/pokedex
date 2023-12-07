@@ -9,7 +9,7 @@
 }
 
 .pokemonTeamElement img {
-  width: 75px;
+  width: 100px;
 }
 .chooseTeam {
   display: flex;
