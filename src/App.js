@@ -25,6 +25,7 @@ function App() {
   const [toggleClick, setToggleClick] = useState(false);
 
   const [myTeam, setMyTeam] = useState([]);
+  const [myTeamType, setMyTeamType] = useState([]);
 
   const [allTypes, setAllTypes] = useState([
     "all",
@@ -79,6 +80,7 @@ function App() {
             img: pokemon.sprites.other["official-artwork"].front_default,
           },
         ]);
+        setMyTeamType([...myTeamType, pokemon.types[0]?.type.name])
       } else {
         alert("Możesz mieć maksymalnie 6 pokemonów.");
       }
@@ -133,13 +135,20 @@ function App() {
     <MyTeam {...pokemon} removePokemonFromTeam={removePokemonFromTeam} />
   ));
 
+  const pokemonTeamTypes = myTeamType.map((type) => (
+  <>
+   <p>{type}</p>
+   </>
+  ));
+
+
   return (
     <>
       <div id="header">
         <Header />
       </div>
       <div id="nav">
-        <div id="pokemonTeam">{pokemonTeam}</div>
+        <div id="pokemonTeam">{pokemonTeam}{pokemonTeamTypes}</div>
         <div id="pokemonInfo">
           {toggleClick ? (
             <ViewPokemonComponent pokemonInfo={viewPokemon} />
