@@ -150,59 +150,62 @@ function App() {
 
   return (
     <>
-      <Container style={{ backgroundColor: "#eef1d69d" }}>
-        <Header />
+      <div id="mainPage">
+        <Container style={{ backgroundColor: "#f0f0f0" }}>
+          <Header />
 
-        <Row className="my-4 gap-4 d-flex align-items-center justify-content-center">
-          {myTeam.length > 0 ? (
-            <Col
-              sm={4}
-              className="d-flex-column justify-content-center align-items-center"
-            >
-              <Row className="d-flex justify-content-center align-items-center my-2">
-                <h2 className="text-center">Twoja Drużyna</h2>
-              </Row>
-              <Row
-                xxl={3}
-                className="d-flex justify-content-center align-items-center "
+          <Row className="my-4 gap-4 d-flex align-items-center justify-content-center">
+            {myTeam.length > 0 ? (
+              <Col
+                sm={4}
+                className="d-flex-column justify-content-center align-items-center"
               >
-                {pokemonTeam}
-              </Row>
+                <Row className="d-flex justify-content-center align-items-center my-2">
+                  <h4 className="text-center">Wybierz swoją drużynę</h4>
+                </Row>
+                <Row
+                  xxl={3}
+                  className="d-flex justify-content-center align-items-center "
+                >
+                  {pokemonTeam}
+                </Row>
+              </Col>
+            ) : null}
+            {viewPokemon.order > 0 ? (
+              <Col
+                sm={7}
+                className="d-flex-column justify-content-center align-items-center pokemonInfo py-2 px-4"
+              >
+                {toggleClick ? (
+                  <ViewPokemonComponent pokemonInfo={viewPokemon} />
+                ) : null}
+              </Col>
+            ) : null}
+          </Row>
+          <Row className="d-flex justify-content-center align-items-center my-5">
+            <Col xl={9}>
+              <Row className="gap-1">{showTypes}</Row>
             </Col>
-          ) : null}
-          {viewPokemon.order > 0 ? (
             <Col
-              sm={7}
-              className="d-flex-column justify-content-center align-items-center pokemonInfo py-2 px-4"
+              xl={2}
+              className="d-flex justify-content-center align-items-center"
             >
-              {toggleClick ? (
-                <ViewPokemonComponent pokemonInfo={viewPokemon} />
-              ) : null}
+              <Form.Control
+                className="inputSearch"
+                onChange={handleSearchValue}
+                type="text"
+                placeholder="Wyszukaj po nazwie"
+                value={searchValue}
+              />
             </Col>
-          ) : null}
-        </Row>
-        <Row className="d-flex justify-content-center align-items-center my-5">
-          <Col xxl={9}>
-            <Row className="gap-1">{showTypes}</Row>
-          </Col>
-          <Col
-            xxl={2}
-            className="d-flex justify-content-center align-items-center"
-          >
-            <Form.Control
-              onChange={handleSearchValue}
-              type="text"
-              placeholder="Wyszukaj po nazwie"
-              value={searchValue}
-            />
-          </Col>
-        </Row>
+          </Row>
 
-        <Row className="showPokemon"> {renderedPokemon}</Row>
-        <Row className="d-flex justify-content-center align-items-center">
-          <Footer />
-        </Row>
-      </Container>
+          <Row className="showPokemon"> {renderedPokemon}</Row>
+          <Row className="d-flex justify-content-center align-items-center">
+            <Footer />
+          </Row>
+        </Container>
+      </div>
     </>
   );
 }

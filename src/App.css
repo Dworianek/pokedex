@@ -1,7 +1,7 @@
-body {
-  background-color: #eef1d69d;
+#mainPage {
+  background-image: url(./img/backgroundImage.png);
+  background-size: 1000px;
 }
-
 .showTypes {
   list-style: none;
   text-transform: uppercase;
@@ -25,4 +25,8 @@ body {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.inputSearch::placeholder {
+  font-size: 14px;
 }
