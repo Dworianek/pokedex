@@ -2,6 +2,7 @@ import "./App.css";
 
 import { useState, useEffect } from "react";
 import { Row, Col, Container } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import PokemonComponent from "./components/pokemonComponent";
@@ -16,9 +17,10 @@ const fetchLink = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]); //Lista pokemonów
+
   const [allPokedex, setAllPokedex] = useState([]); //Szczególy każdego pokemona
 
-  const [allTypePokemon, setAllTypePokemon] = useState([...allPokedex]); //Szczególy każdego pokemona
+  const [allTypePokemon, setAllTypePokemon] = useState([...allPokedex]); //Szczególy każdego pokemona dla konkretnego typu
 
   const [typeClick, setTypeClick] = useState("all");
 
@@ -27,6 +29,8 @@ function App() {
   const [toggleClick, setToggleClick] = useState(false);
 
   const [myTeam, setMyTeam] = useState([]);
+
+  const [searchValue, setSearchValue] = useState("");
 
   const [allTypes, setAllTypes] = useState([
     "all",
@@ -89,27 +93,28 @@ function App() {
     }
   };
 
-  const allPokemon =
-    typeClick === "all"
-      ? allPokedex.map((pokemon) => (
-          <PokemonComponent
-            pokemon={pokemon}
-            addTeamClick={addPokemonToTeam}
-            onClick={pokemonOnClick}
-          />
-        ))
-      : allTypePokemon.map((pokemon) => (
-          <PokemonComponent
-            pokemon={pokemon}
-            addTeamClick={addPokemonToTeam}
-            onClick={pokemonOnClick}
-          />
-        ));
+  const allPokemonToRender = typeClick === "all" ? allPokedex : allTypePokemon;
+
+  const filteredPokemon = allPokemonToRender.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+  const renderedPokemon = filteredPokemon.map((pokemon) => (
+    <PokemonComponent
+      key={pokemon.id}
+      pokemon={pokemon}
+      addTeamClick={addPokemonToTeam}
+      onClick={pokemonOnClick}
+    />
+  ));
 
   const showTypes = allTypes.map((type) => (
-    <>
-      <li
-        style={{ backgroundColor: typeColours[type] }}
+    <Col>
+      <div
+        className="showTypes"
+        style={{
+          backgroundColor: typeColours[type],
+        }}
         onClick={() => {
           setAllTypePokemon(
             allPokedex.filter(
@@ -122,8 +127,8 @@ function App() {
         }}
       >
         {type}
-      </li>
-    </>
+      </div>
+    </Col>
   ));
 
   const removePokemonFromTeam = (order) => {
@@ -132,41 +137,69 @@ function App() {
   };
 
   const pokemonTeam = myTeam.map((pokemon) => (
-    <MyTeam {...pokemon} removePokemonFromTeam={removePokemonFromTeam} />
+    <MyTeam
+      key={pokemon.id}
+      {...pokemon}
+      removePokemonFromTeam={removePokemonFromTeam}
+    />
   ));
+
+  const handleSearchValue = (e) => {
+    setSearchValue(e.target.value);
+  };
 
   return (
     <>
-      <Container fluid style={{ backgroundColor: "#eef1d69d" }}>
-        <Row className="header">
-          <Header />
+      <Container style={{ backgroundColor: "#eef1d69d" }}>
+        <Header />
+
+        <Row className="my-4 gap-4 d-flex align-items-center justify-content-center">
+          {myTeam.length > 0 ? (
+            <Col
+              sm={4}
+              className="d-flex-column justify-content-center align-items-center"
+            >
+              <Row className="d-flex justify-content-center align-items-center my-2">
+                <h2 className="text-center">Twoja Drużyna</h2>
+              </Row>
+              <Row
+                xxl={3}
+                className="d-flex justify-content-center align-items-center "
+              >
+                {pokemonTeam}
+              </Row>
+            </Col>
+          ) : null}
+          {viewPokemon.order > 0 ? (
+            <Col
+              sm={7}
+              className="d-flex-column justify-content-center align-items-center pokemonInfo py-2 px-4"
+            >
+              {toggleClick ? (
+                <ViewPokemonComponent pokemonInfo={viewPokemon} />
+              ) : null}
+            </Col>
+          ) : null}
         </Row>
-        <Row className="rowTeam align-items-center">
-          <Col
-            lg={6}
-            className="d-flex align-items-center justify-content-center"
-          >
-            {pokemonTeam}
+        <Row className="d-flex justify-content-center align-items-center my-5">
+          <Col xxl={9}>
+            <Row className="gap-1">{showTypes}</Row>
           </Col>
           <Col
-            lg={6}
-            className="d-flex-column align-items-center justify-content-center "
+            xxl={2}
+            className="d-flex justify-content-center align-items-center"
           >
-            {toggleClick ? (
-              <ViewPokemonComponent pokemonInfo={viewPokemon} />
-            ) : null}
+            <Form.Control
+              onChange={handleSearchValue}
+              type="text"
+              placeholder="Wyszukaj po nazwie"
+              value={searchValue}
+            />
           </Col>
         </Row>
-        <Row className="rowPokemon">
-          <div id="main">
-            <div id="content">
-              <div className="showTypes">{showTypes}</div>
-              <div className="showPokemon">{allPokemon}</div>
-            </div>
-          </div>
-        </Row>
-        <Row className="rowFooter">
-          {" "}
+
+        <Row className="showPokemon"> {renderedPokemon}</Row>
+        <Row className="d-flex justify-content-center align-items-center">
           <Footer />
         </Row>
       </Container>

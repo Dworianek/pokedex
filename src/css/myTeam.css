@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
   background-color: white;
   border-radius: 50%;
 }
 
 .pokemonTeamElement img {
-  width: 100px;
+  width: 80px;
 }
 .chooseTeam {
   display: flex;
@@ -17,11 +17,21 @@
   align-items: center;
 }
 
-.oakImg {
+.removePokemon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 5px;
-  background-color: #fb8500;
+  background-color: #023047;
   border-radius: 50%;
   padding: 5%;
+  width: 50px;
+  height: 50px;
+}
+
+.oakImg {
+  width: 30px;
+  height: 30px;
 }
 
 .oakImg:hover {

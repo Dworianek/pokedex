@@ -22,86 +22,75 @@ export default function ViewPokemonComponent(props) {
 
   return (
     <>
-      <Row>
+      <Row className="d-flex justify-content-center ">
         <p className="nameOrder">
           {props.pokemonInfo.name}{" "}
           <strong>#{pokemonNumber.toString().padStart(4, "0")}</strong>
         </p>{" "}
       </Row>
-      <Row>
-        <Col
-          lg={4}
-          className="d-flex align-items-center justify-content-center "
-        >
-          <div className="viewPokemonLeft ">
-            <div className="spritesChange">
-              <img src={normal} alt="" onClick={() => setSpriteStyle(true)} />
-              <img src={shiny} alt="" onClick={() => setSpriteStyle(false)} />
-            </div>
+      <Row className="py-3">
+        <Col xl={4} className="d-flex-row justify-content-between">
+          <Row className="d-flex justify-content-center my-3 spritesChange">
+            <img src={normal} alt="" onClick={() => setSpriteStyle(true)} />
+            <img src={shiny} alt="" onClick={() => setSpriteStyle(false)} />
+          </Row>
+          <Row className="d-flex justify-content-center pokemonSprite">
             <img
               src={spriteStyle === true ? basicSprite : shinySprite}
               alt=""
             />
-          </div>
+          </Row>
+          <Row>
+            <div className="types">
+              {props.pokemonInfo.types.map((typesElement, index) => (
+                <div
+                  key={index}
+                  className="typeElements"
+                  style={{
+                    backgroundColor: typeColours[typesElement.type.name],
+                    padding: "5px 20px 5px 20px",
+                    borderRadius: "10px",
+                    fontWeight: "600",
+                  }}
+                >
+                  {typesElement.type.name}
+                </div>
+              ))}
+            </div>
+          </Row>
         </Col>
         <Col
-          lg={5}
-          className="d-flex align-items-center justify-content-center viewPokemonRight"
+          xl={7}
+          className="d-flex justify-content-center align-items-center pokemonStatInfo"
         >
-          {" "}
-          <div className="pokemonDetails">
-            <div className="attack">
-              <strong>
-                <p className="infoHeader">Statistics</p>
-              </strong>
-              <p>
-                {props.pokemonInfo.stats.map((statPokemon) => (
-                  <div className="stats">
-                    <p className="infoValue">
-                      <strong>{statPokemon.stat.name}</strong> :{" "}
-                      {statPokemon.base_stat}
-                    </p>
-                  </div>
-                ))}
+          <Col>
+            <strong>
+              <p className="infoHeader">Informacje</p>
+            </strong>
+            <div>
+              <strong></strong>
+              <p className="infoValue">
+                <strong>Abilities:</strong>{" "}
+                {props.pokemonInfo.abilities[0].ability.name}
+              </p>
+              <p className="infoValue">
+                <strong>Height:</strong> {props.pokemonInfo.height}
+              </p>
+              <p className="infoValue">
+                <strong>Weight:</strong> {props.pokemonInfo.weight} lbs
               </p>
             </div>
-            <div className="pokemonInfo">
-              <div className>
-                <strong>
-                  <p className="infoHeader">Information</p>
-                </strong>
-                <p className="infoValue">
-                  <strong>Abilities:</strong>{" "}
-                  {props.pokemonInfo.abilities[0].ability.name}
-                </p>
-                <p className="infoValue">
-                  <strong>Height:</strong> {props.pokemonInfo.height}
-                </p>
-                <p className="infoValue">
-                  <strong>Weight:</strong> {props.pokemonInfo.weight} lbs
-                </p>
-              </div>
+            <strong>
+              <p className="infoHeader">Statystyki</p>
+            </strong>
 
-              <div className="types">
-                {props.pokemonInfo.types.map((typesElement, index) => (
-                  <>
-                    <div
-                      key={index}
-                      className="typeElements"
-                      style={{
-                        backgroundColor: typeColours[typesElement.type.name],
-                        padding: "5px 20px 5px 20px",
-                        borderRadius: "10px",
-                        fontWeight: "600",
-                      }}
-                    >
-                      {typesElement.type.name}
-                    </div>
-                  </>
-                ))}
+            {props.pokemonInfo.stats.map((statPokemon) => (
+              <div className="infoValue" key={statPokemon.stat.name}>
+                <strong>{statPokemon.stat.name}</strong> :{" "}
+                {statPokemon.base_stat}
               </div>
-            </div>
-          </div>
+            ))}
+          </Col>
         </Col>
       </Row>
     </>

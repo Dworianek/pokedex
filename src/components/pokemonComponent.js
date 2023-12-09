@@ -21,22 +21,20 @@ export default function PokemonComponent(props) {
           alt=""
         />
         <p className="pokemonNumber">{number.toString().padStart(4, "0")}</p>
-        <h3 className="pokemonName">{props.pokemon.name}</h3>
+        <p className="pokemonName">{props.pokemon.name}</p>
         <div className="types">
-          {props.pokemon.types.map((typesElement, index) => (
-            <>
-              <div
-                key={index}
-                className="typeElements"
-                style={{
-                  backgroundColor: typeColours[typesElement.type.name],
-                  padding: "2px 10px 2px 10px",
-                  borderRadius: "10px",
-                }}
-              >
-                {typesElement.type.name}
-              </div>
-            </>
+          {props.pokemon.types.map((typesElement) => (
+            <div
+              key={typesElement.name}
+              className="typeElements"
+              style={{
+                backgroundColor: typeColours[typesElement.type.name],
+                padding: "2px 10px 2px 10px",
+                borderRadius: "10px",
+              }}
+            >
+              {typesElement.type.name}
+            </div>
           ))}
         </div>
       </div>
