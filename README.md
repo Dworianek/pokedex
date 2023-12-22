@@ -1,5 +1,8 @@
 # Pokedex
 
+## Link do projektu
+https://dworianek.github.io/pokedex/
+
 ## Opis
 
 Repozytorium Pokedex zawiera aplikację do przeglądania informacji o pokemonach, wykorzystując publiczne API "PokeApi.co". Aplikacja pozwala użytkownikowi na przeglądanie wszystkich dostępnych pokemonów, sortowanie ich według typu lub nazwy, a także tworzenie swojej drużyny z ulubionych stworzeń.
