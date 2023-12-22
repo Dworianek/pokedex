@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Pokedex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Opis
 
-## Available Scripts
+Repozytorium Pokedex zawiera aplikację do przeglądania informacji o pokemonach, wykorzystując publiczne API "PokeApi.co". Aplikacja pozwala użytkownikowi na przeglądanie wszystkich dostępnych pokemonów, sortowanie ich według typu lub nazwy, a także tworzenie swojej drużyny z ulubionych stworzeń.
 
-In the project directory, you can run:
+![image](https://github.com/Dworianek/pokedex/assets/45004601/1bc2ae7c-320a-495a-a232-1267445dba8b)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Funkcje
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Przeglądanie Pokemonów:**
+   - Aplikacja na starcie wyświetla wszystkie dostępne pokemony z API, prezentując ich nazwę, numer, typ i podstawowe informacje.
 
-### `npm test`
+2. **Sortowanie i Wyszukiwanie:**
+   - Użytkownik ma możliwość sortowania pokemonów według typu lub nazwy za pomocą okna wyszukiwania.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://github.com/Dworianek/pokedex/assets/45004601/4a59e9f6-707b-4460-a182-508f7395f0b6)
 
-### `npm run build`
+![image](https://github.com/Dworianek/pokedex/assets/45004601/5210609f-df62-42b7-8530-19558129306f)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Okno Informacyjne:**
+   - Po kliknięciu na danego pokemona otwiera się okno informacyjne, prezentujące większe zdjęcie, dodatkowe informacje i statystyki.
+   - Możliwość zmiany Sprite ze zwykłego na Shiny.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image](https://github.com/Dworianek/pokedex/assets/45004601/bff02838-073d-4adc-b5ae-6e7611f1b0df)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Zbieranie Drużyny:**
+   - Po kliknięciu w ikonę Pokeballa pod danym pokemonem użytkownik może dodać go do swojej drużyny, składającej się z maksymalnie 6 pokemonów.
+   - Możliwość usunięcia pokemona z drużyny i wybrania innego.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](https://github.com/Dworianek/pokedex/assets/45004601/702a6e16-ceca-43a4-8beb-3a5b918d09b6)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Technologie
 
-## Learn More
+Aplikacja została stworzona przy użyciu następujących technologii:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Framework JavaScript:** React
+- **Biblioteka do Stylingu:** Bootstrap
+- **API Pokemon:** PokeApi
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Instrukcje Użytkowania
 
-### Code Splitting
+1. Sklonuj repozytorium na swój lokalny komputer.
+2. Otwórz terminal w katalogu projektu i wykonaj polecenie `npm install` w celu zainstalowania zależności.
+3. Uruchom aplikację za pomocą polecenia `npm start`.
+4. Przeglądaj, sortuj, wyszukuj pokemonów i buduj swoją drużynę!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Autor
+Adrian Dworak
